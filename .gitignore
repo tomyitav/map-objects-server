@@ -1,0 +1,8 @@
+node_modules
+dist
+npm-debug.log
+.idea
+.env
+.serverless
+types.d.ts
+ts-files.txt
