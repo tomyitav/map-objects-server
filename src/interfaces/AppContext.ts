@@ -1,7 +1,5 @@
-import {AbstractCarsModel} from "../model/cars/AbstractCarsModel";
-import {AbstractTrainsModel} from "../model/trains/AbstractTrainsModel";
+import {AbstractMarkerModel} from "../model/markers/AbstractMarkerModel";
 
 export interface AppContext {
-    carsModel: AbstractCarsModel,
-    trainsModel: AbstractTrainsModel,
+    markersModel: AbstractMarkerModel,
 }

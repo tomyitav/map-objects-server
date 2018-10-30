@@ -7,10 +7,9 @@ import schema from "./graphql/schema/schema";
 import {AbstractLogger} from "./core/logger/AbstractLogger";
 import {Express} from "express-serve-static-core";
 import {AbstractSetting} from "./core/config/AbstractSetting";
-import {AbstractCarsModel} from "./model/cars/AbstractCarsModel";
-import {AbstractTrainsModel} from "./model/trains/AbstractTrainsModel";
 import {AppContext} from "./interfaces/AppContext";
 import {Injectable, Injector} from "injection-js";
+import {AbstractMarkerModel} from "./model/markers/AbstractMarkerModel";
 
 @Injectable()
 export class Server {
@@ -40,8 +39,7 @@ export class Server {
 
     private getAppContext(injector: Injector): AppContext {
         return {
-            carsModel: injector.get(AbstractCarsModel),
-            trainsModel: injector.get(AbstractTrainsModel),
+            markersModel: injector.get(AbstractMarkerModel),
         }
     }
 
