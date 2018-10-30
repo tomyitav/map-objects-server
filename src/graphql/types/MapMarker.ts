@@ -8,7 +8,7 @@ type MapMarker {
 
 # the schema allows the following query:
 type Query {
-  getMapMarkers(ts: Float): [MapMarker]
+  MapMarkers(ts: Float): [MapMarker]
 }
 
 `;
