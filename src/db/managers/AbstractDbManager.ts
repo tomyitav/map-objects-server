@@ -1,13 +1,12 @@
 import {DbManagerSettings} from "../types/DbManagerSettings";
 import {AbstractDbConnector} from "../connectors/AbstractDbConnector";
-import {AbstractLogger} from "../../core/logger/AbstractLogger";
 import * as Mongoose from 'mongoose';
 
 export abstract class AbstractDbManager {
 
     protected dbModel: Mongoose.Model<any>;
     protected dbModelInitialized: Promise<any>;
-    constructor(protected connector: AbstractDbConnector, protected logger: AbstractLogger) {
+    constructor(protected connector: AbstractDbConnector) {
         this.dbModelInitialized = this.initializeManager();
     }
 

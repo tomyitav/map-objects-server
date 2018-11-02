@@ -4,7 +4,6 @@ import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import {printSchema} from "graphql/utilities/schemaPrinter";
 import schema from "./graphql/schema/schema";
-import {AbstractLogger} from "./core/logger/AbstractLogger";
 import {Express} from "express-serve-static-core";
 import {AbstractSetting} from "./core/config/AbstractSetting";
 import {AppContext} from "./interfaces/AppContext";
@@ -17,7 +16,7 @@ export class Server {
     private express: Express;
     private graphqlPort: number;
     private context: AppContext;
-    constructor(private logger: AbstractLogger, private setting: AbstractSetting) {
+    constructor(private setting: AbstractSetting) {
 
     }
 
@@ -27,7 +26,7 @@ export class Server {
 
     public initServer(injector: Injector) {
         this.initContext(injector);
-        this.logger.info('Starting graphql server...');
+        console.info('Starting graphql server...');
         this.graphqlPort = this.setting.getConfig().server.port;
         this.express = express();
         this.initRoutes();

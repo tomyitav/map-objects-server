@@ -15,7 +15,7 @@ export class Setting extends AbstractSetting {
             db: {
                 urls: process.env.DB_URLS,
                 replicaName: process.env.REPLICA_NAME,
-                user: process.env.USERNAME,
+                user: process.env.DB_USERNAME,
                 pass: process.env.PASSWORD
             }
         }
