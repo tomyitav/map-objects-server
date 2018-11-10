@@ -30,7 +30,7 @@ export abstract class AbstractDbConnector {
             const options: ConnectionOptions = this.createConnectionOptions();
             Mongoose.connect(`mongodb://${urls}/${name}?ssl=true&replicaSet=${replicaName}&authSource=admin`, options)
                 .then((res) => {
-                    console.log('Connected to db- ', res);
+                    console.log('Connected to db...');
                     resolve(res)
                 })
                 .catch((err) => {
