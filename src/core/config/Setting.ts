@@ -9,9 +9,6 @@ export class Setting extends AbstractSetting {
     constructor() {
         super();
         this.settings = {
-            server: {
-                port: process.env.serverPort || 8080,
-            },
             db: {
                 urls: process.env.DB_URLS,
                 replicaName: process.env.REPLICA_NAME,

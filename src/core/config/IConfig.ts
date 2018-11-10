@@ -1,5 +1,4 @@
 export interface IConfig {
-    server: ServerConfig,
     db: DbConnection
 }
 
@@ -8,8 +7,4 @@ interface DbConnection {
     replicaName: string,
     user: string,
     pass: string,
-}
-
-interface ServerConfig {
-    port: number,
 }

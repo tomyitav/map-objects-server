@@ -1,10 +1,5 @@
-import * as express from "express";
-import {graphiqlExpress, graphqlExpress} from "graphql-server-express";
-import * as bodyParser from "body-parser";
-import * as cors from "cors";
-import {printSchema} from "graphql/utilities/schemaPrinter";
+import {ApolloServer} from 'apollo-server-lambda';
 import schema from "./graphql/schema/schema";
-import {Express} from "express-serve-static-core";
 import {AbstractSetting} from "./core/config/AbstractSetting";
 import {AppContext} from "./interfaces/AppContext";
 import {Injectable, Injector} from "injection-js";
@@ -13,8 +8,7 @@ import {AbstractMarkerModel} from "./model/markers/AbstractMarkerModel";
 @Injectable()
 export class Server {
 
-    private express: Express;
-    private graphqlPort: number;
+    private apolloServer: ApolloServer;
     private context: AppContext;
     constructor(private setting: AbstractSetting) {
 
@@ -27,13 +21,11 @@ export class Server {
     public initServer(injector: Injector) {
         this.initContext(injector);
         console.info('Starting graphql server...');
-        this.graphqlPort = this.setting.getConfig().server.port;
-        this.express = express();
-        this.initRoutes();
+        this.createApolloServer();
     }
 
-    public getExpressInstance(): Express {
-        return this.express
+    public getApolloInstance(): ApolloServer {
+        return this.apolloServer;
     }
 
     private getAppContext(injector: Injector): AppContext {
@@ -42,25 +34,14 @@ export class Server {
         }
     }
 
-    private initRoutes() {
-        const graphqlRoutePrefix = process.env.IS_OFFLINE ? '' : '/dev';
-        this.express.use(cors());
-        this.express.use('/graphql', bodyParser.json(), graphqlExpress({
+    private createApolloServer() {
+        const graphqlRoutePrefix = process.env.IS_OFFLINE ? '' : '/prod';
+        this.apolloServer = new ApolloServer({
             schema,
-            context: this.context
-        }));
-
-        this.express.use('/graphiql', graphiqlExpress({
-            endpointURL: graphqlRoutePrefix + '/graphql'
-        }));
-
-        this.express.use('/schema', (req, res) => {
-            res.set('Content-Type', 'text/plain');
-            res.send(printSchema(schema));
+            context: this.context,
+            playground: {
+                endpoint: graphqlRoutePrefix + '/graphql'
+            }
         });
-    }
-
-    public start() {
-        this.express.listen(this.graphqlPort);
     }
 }

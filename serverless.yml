@@ -1,4 +1,4 @@
-service: serverless-graphql
+service: map-objects
 
 plugins:
   - serverless-offline
@@ -7,20 +7,14 @@ plugins:
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: dev
+  stage: prod
   region: us-east-1
 
 functions:
   graphql:
     handler: lambda.handler
     events:
-      - http:
-          path: graphql
-          method: post
-          cors: true
-  playground:
-    handler: lambda.handler
-    events:
-      - http:
-          path: graphiql
-          method: get
+    - http:
+        path: graphql
+        method: any
+        cors: true
