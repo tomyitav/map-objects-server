@@ -1,5 +1,5 @@
 import {AbstractMarkerModel} from "./AbstractMarkerModel";
-import {MapMarker, MarkerKind} from "../../interfaces/types";
+import {MapMarker} from "../../interfaces/types";
 import {Injectable} from "injection-js";
 import MarkerDbManager from "../../db/managers/MarkerDbManager";
 
