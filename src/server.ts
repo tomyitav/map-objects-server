@@ -1,6 +1,5 @@
 import {ApolloServer} from 'apollo-server-lambda';
 import schema from "./graphql/schema/schema";
-import {AbstractSetting} from "./core/config/AbstractSetting";
 import {AppContext} from "./interfaces/AppContext";
 import {Injectable, Injector} from "injection-js";
 import {AbstractMarkerModel} from "./model/markers/AbstractMarkerModel";
@@ -10,9 +9,6 @@ export class Server {
 
     private apolloServer: ApolloServer;
     private context: AppContext;
-    constructor(private setting: AbstractSetting) {
-
-    }
 
     public initContext(injector: Injector) {
         this.context = this.getAppContext(injector);
