@@ -1,5 +1,5 @@
-import {AbstractMarkerModel} from "../model/markers/AbstractMarkerModel";
+import {MessengerModel} from "../model/messenger/MessengerModel";
 
 export interface AppContext {
-    markersModel: AbstractMarkerModel,
+    messengersModel: MessengerModel,
 }

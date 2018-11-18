@@ -4,7 +4,7 @@ import {DbConnectionParams} from "../types/DbConnectionParams";
 import {Injectable} from "injection-js";
 
 @Injectable()
-export class MarkersDbConnector extends AbstractDbConnector{
+export class MessengerDbConnector extends AbstractDbConnector{
 
     constructor(public settings: AbstractSetting) {
         super(settings);

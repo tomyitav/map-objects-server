@@ -2,7 +2,7 @@ import {ApolloServer} from 'apollo-server-lambda';
 import schema from "./graphql/schema/schema";
 import {AppContext} from "./interfaces/AppContext";
 import {Injectable, Injector} from "injection-js";
-import {AbstractMarkerModel} from "./model/markers/AbstractMarkerModel";
+import {MessengerModel} from "./model/messenger/MessengerModel";
 
 @Injectable()
 export class Server {
@@ -26,7 +26,7 @@ export class Server {
 
     private getAppContext(injector: Injector): AppContext {
         return {
-            markersModel: injector.get(AbstractMarkerModel),
+            messengersModel: injector.get(MessengerModel),
         }
     }
 

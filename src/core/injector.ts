@@ -4,17 +4,16 @@ import {Server} from "../server";
 import {AbstractSetting} from "./config/AbstractSetting";
 import {Setting} from "./config/Setting";
 import {Injector, ReflectiveInjector} from 'injection-js';
-import {AbstractMarkerModel} from "../model/markers/AbstractMarkerModel";
-import {MarkerModel} from "../model/markers/MarkerModel";
-import MarkerDbManager from "../db/managers/MarkerDbManager";
-import {MarkersDbConnector} from "../db/connectors/MarkersDbConnector";
+import {MessengerModel} from "../model/messenger/MessengerModel";
+import MessengerDbManager from "../db/managers/MessengerDbManager";
+import {MessengerDbConnector} from "../db/connectors/MessengerDbConnector";
 
 let injector: Injector = ReflectiveInjector.resolveAndCreate([
     {provide: AbstractSetting, useClass: Setting},
-    {provide: AbstractMarkerModel, useClass: MarkerModel},
-    {provide: MarkersDbConnector, useClass: MarkersDbConnector},
-    {provide: MarkerDbManager, useClass: MarkerDbManager},
-    {provide: Server, useClass: Server}
+    Server,
+    MessengerDbConnector,
+    MessengerDbManager,
+    MessengerModel
     ]);
 
 export default injector;

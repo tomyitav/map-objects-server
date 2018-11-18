@@ -11,7 +11,7 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean && npm run generate",
     "build": "tsc",
-    "start": "sls offline start --skipCacheInvalidation",
+    "start": "sls offline start --skipCacheInvalidation --port 8080",
     "dev": "tsc --watch & nodemon dist",
     "test": "tsc && mocha dist/**/*.spec.js",
     "lint": "eslint src --ext ts",

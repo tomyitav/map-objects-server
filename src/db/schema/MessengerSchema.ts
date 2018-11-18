@@ -1,12 +1,12 @@
 import * as Mongoose from 'mongoose';
 
-const MarkersSchema:  Mongoose.Schema = new Mongoose.Schema({
+const MessengerSchema:  Mongoose.Schema = new Mongoose.Schema({
     location: {
         lat: {type: Number, required: true},
         lng: {type: Number, required: true},
     },
     kind: {type: String, required: true},
-    ts: {type: Number, required: true}
+    modified: {type: Date, default: Date.now}
 });
 
-export default MarkersSchema;
+export default MessengerSchema;

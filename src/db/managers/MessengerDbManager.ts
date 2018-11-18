@@ -1,17 +1,17 @@
 import {AbstractDbManager} from "./AbstractDbManager";
 import {DbManagerSettings} from "../types/DbManagerSettings";
-import MarkersSchema from "../schema/MarkersSchema";
+import MessengerSchema from "../schema/MessengerSchema";
 import {Injectable} from "injection-js";
-import {MarkersDbConnector} from "../connectors/MarkersDbConnector";
+import {MessengerDbConnector} from "../connectors/MessengerDbConnector";
 
 @Injectable()
-export default class MarkerDbManager extends AbstractDbManager {
+export default class MessengerDbManager extends AbstractDbManager {
 
-    constructor(protected connector: MarkersDbConnector) {
+    constructor(protected connector: MessengerDbConnector) {
         super(connector);
     }
 
-    public async getMapMarkers() {
+    public async getMessengers() {
         const dbModel = await this.getDbModel();
         return this.dbModel.find();
     }
@@ -48,8 +48,8 @@ export default class MarkerDbManager extends AbstractDbManager {
 
     protected getManagerSettings(): DbManagerSettings{
         return {
-            collection: "map-markers",
-            schema: MarkersSchema
+            collection: "map-marker",
+            schema: MessengerSchema
         }
     }
 }

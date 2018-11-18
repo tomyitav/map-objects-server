@@ -1,6 +1,6 @@
 const schema = `
-type MapMarker {
- id_: String
+type Messenger {
+ _id: String
  location: Position,
  kind: MarkerKind,
  ts: Float
@@ -8,7 +8,7 @@ type MapMarker {
 
 # the schema allows the following query:
 type Query {
-  MapMarkers(ts: Float): [MapMarker]
+  Messengers(ts: Float): [Messenger]
 }
 
 `;
