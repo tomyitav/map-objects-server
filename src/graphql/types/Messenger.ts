@@ -6,9 +6,17 @@ type Messenger {
  ts: Float
 }
 
+input MessengerInput {
+  try: Int!
+}
+
 # the schema allows the following query:
 type Query {
   Messengers(ts: Float): [Messenger]
+}
+
+type Mutation {
+  AddMessenger(input: MessengerInput): Messenger  
 }
 
 `;

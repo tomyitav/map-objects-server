@@ -8,7 +8,8 @@ export class MessengerModel{
     constructor(private dbManager: MessengerDbManager) {
     }
 
-    public getMarkers(ts?: number): Promise<Array<Messenger>> {
+    public getMessengers(ts?: number): Promise<Array<Messenger>> {
         return this.dbManager.getMessengers();
     }
+
 }
